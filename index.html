@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        input[type="text"], textarea, button {
+            margin: 10px 0;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical Records Management</h1>
+    <div id="recordForm">
+        <h2>Add New Medical Record</h2>
+        <input type="text" id="diagnosis" placeholder="Diagnosis">
+        <textarea id="treatment" placeholder="Treatment"></textarea>
+        <button onclick="addRecord()">Add Record</button>
+    </div>
+    <hr>
+    <div id="recordList">
+        <h2>Medical Records</h2>
+        <ul id="records"></ul>
+    </div>
+    <script>
+        // Ethereum provider and contract address
+        const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+        const contractAddress = "YOUR_CONTRACT_ADDRESS";
+        
+        // ABI (Application Binary Interface) of the smart contract
+        const abi = [
+            // ABI definition here
+        ];
+
+        // Initialize contract instance
+        const contract = new ethers.Contract(contractAddress, abi, provider);
+
+        // Function to add a new medical record
+        async function addRecord() {
+            const diagnosis = document.getElementById("diagnosis").value;
+            const treatment = document.getElementById("treatment").value;
+            await contract.addRecord(diagnosis, treatment);
+            // Refresh record list after adding new record
+            fetchRecords();
+        }
+
+        // Function to fetch and display medical records
+        async function fetchRecords() {
+            const recordList = document.getElementById("records");
+            recordList.innerHTML = ""; // Clear previous records
+            const recordCount = await contract.getRecordCount();
+            for (let i = 0; i < recordCount; i++) {
+                const record = await contract.getRecord(i);
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<strong>Diagnosis:</strong> ${record[0]}<br><strong>Treatment:</strong> ${record[1]}<br><strong>Timestamp:</strong> ${new Date(record[2] * 1000).toLocaleString()}`;
+                recordList.appendChild(listItem);
+            }
+        }
+
+        // Initial fetch of records when page loads
+        fetchRecords();
+    </script>
+</body>
+</html>
