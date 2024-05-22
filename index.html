@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medichain DApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>Medichain DApp</h1>
+    <div>
+        <h2>Add Record</h2>
+        <input type="text" id="diagnosis" placeholder="Diagnosis">
+        <input type="text" id="treatment" placeholder="Treatment">
+        <button onclick="addRecord()">Add Record</button>
+    </div>
+    <div>
+        <h2>Get Records</h2>
+        <button onclick="getRecords()">Get Records</button>
+        <ul id="recordsList"></ul>
+    </div>
+</body>
+</html>
