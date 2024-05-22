@@ -6,19 +6,80 @@
     <title>Medichain DApp</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(50% - 5px);
+            padding: 8px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>Medichain DApp</h1>
-    <div>
-        <h2>Add Record</h2>
-        <input type="text" id="diagnosis" placeholder="Diagnosis">
-        <input type="text" id="treatment" placeholder="Treatment">
-        <button onclick="addRecord()">Add Record</button>
-    </div>
-    <div>
-        <h2>Get Records</h2>
-        <button onclick="getRecords()">Get Records</button>
-        <ul id="recordsList"></ul>
+    <div class="container">
+        <h1>Medichain DApp</h1>
+        <form>
+            <h2>Add Record</h2>
+            <input type="text" id="diagnosis" placeholder="Diagnosis">
+            <input type="text" id="treatment" placeholder="Treatment">
+            <button onclick="addRecord()">Add Record</button>
+        </form>
+        <div>
+            <h2>Records</h2>
+            <button onclick="getRecords()">Get Records</button>
+            <ul id="recordsList"></ul>
+        </div>
     </div>
 </body>
 </html>
