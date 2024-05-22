@@ -104,24 +104,28 @@ const contractABI = [
        "stateMutability": "view",
        "type": "function"
     }
- ]
- ;
+];
 
 let web3;
 let contract;
+let isConnected = false;
 
 window.addEventListener('load', async () => {
     if (window.ethereum) {
         web3 = new Web3(window.ethereum);
         try {
             await window.ethereum.enable();
+            isConnected = true;
             initContract();
+            updateConnectButton();
         } catch (error) {
             console.error("User denied account access");
         }
     } else if (window.web3) {
         web3 = new Web3(web3.currentProvider);
+        isConnected = true;
         initContract();
+        updateConnectButton();
     } else {
         console.log('No web3 provider detected');
     }
@@ -129,6 +133,41 @@ window.addEventListener('load', async () => {
 
 function initContract() {
     contract = new web3.eth.Contract(contractABI, contractAddress);
+}
+
+async function connectWallet() {
+    if (!isConnected) {
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            if (accounts.length > 0) {
+                isConnected = true;
+                updateConnectButton();
+                console.log('Wallet connected');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        try {
+            await web3.currentProvider.disconnect();
+            isConnected = false;
+            updateConnectButton();
+            console.log('Wallet disconnected');
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+function updateConnectButton() {
+    const connectWalletBtn = document.getElementById('connectWalletBtn');
+    if (isConnected) {
+        connectWalletBtn.textContent = 'Connected';
+        connectWalletBtn.disabled = true; // Disable button when already connected
+    } else {
+        connectWalletBtn.textContent = 'Connect Wallet';
+        connectWalletBtn.disabled = false; // Enable button when not connected
+    }
 }
 
 async function addRecord() {

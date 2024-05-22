@@ -7,12 +7,14 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="app.js"></script>
     <style>
+        /* CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9; /* Adjusted background color */
+            background-color: #f9f9f9;
             color: #333;
+            position: relative;
         }
 
         .container {
@@ -81,9 +83,18 @@
             text-decoration: none;
             margin: 0 10px;
         }
+
+        /* Styling for the Connect Wallet button */
+        .connect-wallet-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+        }
     </style>
 </head>
 <body>
+    <button id="connectWalletBtn" class="connect-wallet-btn" onclick="connectWallet()">Connect Wallet</button>
     <div class="container">
         <h1>Medichain DApp</h1>
         <form>
