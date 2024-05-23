@@ -53,7 +53,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For inquiries or support, please contact [Steiner254 - Alvin Mwambi](https://twitter.com/Steiner254).
+For inquiries or support, please contact [Steiner254](https://twitter.com/Steiner254).
 
 
 N/B: Replace the placeholders with the relevant information for your project.
