@@ -56,5 +56,5 @@ This project is licensed under the [MIT License](...).
 For inquiries or support, please contact [Steiner254](https://twitter.com/Steiner254).
 
 
-N/B: Replace the placeholders with the relevant information for your project.
+N/B: Replace the placeholders with the `relevant information` for your project.
 
