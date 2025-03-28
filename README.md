@@ -1,6 +1,6 @@
 # Medichain DApp
 
-Medichain DApp is a decentralized application (DApp) that allows users to securely store and manage their medical records on the blockchain. It provides a user-friendly interface for adding medical records, retrieving records, and authorizing healthcare providers to access patient records.
+Medichain DApp is a decentralized application (DApp) that allows users to securely store and manage their medical records on the blockchain. It provides a user-friendly interface for adding medical records, retrieving records, and authorizing healthcare providers to access patient record(s).
 
 ## Features
 
